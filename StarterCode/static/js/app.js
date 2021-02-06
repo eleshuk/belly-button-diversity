@@ -53,7 +53,7 @@ function buildPlots(sample) {
       y: otu_ids,
       text: labels,
       marker: {
-        color: 'Green'},
+        color: 'Viridis'},
       type: "bar", 
       orientation: "h",
       };
@@ -70,7 +70,8 @@ function buildPlots(sample) {
       marker: {
         size: sampleArray.sample_values,
         color: sampleArray.otu_ids,
-        backgroundColor: 'rgba(0, 0, 0, 0.1)' 
+        colorscale: "Viridis",
+        opacity: 0.8
       },
       text: sampleArray.otu_labels
     };
@@ -79,8 +80,8 @@ function buildPlots(sample) {
       xaxis: {
         title: "OTU ID"
       },
-      height: 800,
-      width: 1400
+      height: 600,
+      width: 1200
     };
 
     var data2 = [trace2]
