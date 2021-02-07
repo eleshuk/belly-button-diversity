@@ -11,3 +11,5 @@ After creating the bar chart, I created an interactive bubble chart to represent
 
 The end result is an interactive dashboard that allows the user to toggle between subjects to compare belly button microbes and the quantity that is present in the subject's belly button.
 ![](Images/dashboard_whole.PNG)
+
+Dashboard was lauched and can be found at: 
