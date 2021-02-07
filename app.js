@@ -112,3 +112,4 @@ function optionChanged(sample) {
   buildPlots(sample);
   getMetadata(sample);
 };
+
