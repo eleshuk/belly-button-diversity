@@ -1,24 +1,24 @@
-// // Read in the samples.json file -- get metadata
+// Read in the samples.json file -- get metadata
 function getMetadata(sample) {
   d3.json("samples.json").then(jsondata => {
     console.log(jsondata);
     var metadata = jsondata.metadata;
     console.log(metadata);
 
-    var filter = metadata.filter(x=>x.sample === metadata.id)[0];
+    var filter = metadata.filter(x => x.sample === metadata.id)[0];
 
     // Select element
     var body = d3.select("#sample-metadata");
     // Clear the body before reloading new info
     body.html("");
     // Append body with the key and value of the metadata
-      Object.entries(filter).forEach((key)=>{
-        body.append("p").text(key[0] + ": " + key[1]);
-        console.log(key[0]);
-        console.log(key[1]);
+    Object.entries(filter).forEach((key) => {
+      body.append("p").text(key[0] + ": " + key[1]);
+      // console.log(key[0]);
+      // console.log(key[1]);
     });
   });
-};
+}
 
 // OTUs = operational taxonomic units
 // Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
@@ -99,17 +99,18 @@ function init() {
       d3.select("#selDataset")
       .append("option")
       .text(name)
-      .property("value");
+      .property("value", name);
     });
     buildPlots(data.names[0]);
     getMetadata(data.names[0]);
   });
-};
-init();
+}
 
 // Function for event change
-function optionChanged(sample) {
-  buildPlots(sample);
-  getMetadata(sample);
-};
+function optionChanged(newSample) {
+  buildPlots(newSample);
+  getMetadata(newSample);
+}
+
+init();
 
