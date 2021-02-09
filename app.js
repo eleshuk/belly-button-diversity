@@ -5,7 +5,7 @@ function getMetadata(sample) {
     var metadata = jsondata.metadata;
     console.log(metadata);
 
-    var filter = metadata.filter(x => x.sample === metadata.id)[0];
+    var filter = metadata.filter(x => x.id == sample)[0];
 
     // Select element
     var body = d3.select("#sample-metadata");
@@ -30,8 +30,9 @@ function buildPlots(sample) {
   d3.json("samples.json").then(data => {
     // Filter by ID
     var samples = data.samples;
+    console.log(sample);
     // Filter the samples data
-    var sampleArray = data.samples.filter(x=>x.sample === samples.id)[0];
+    var sampleArray = data.samples.filter(x=>x.id == sample)[0];
     console.log(sampleArray);
 
     // Get top 10 sample values
@@ -101,6 +102,7 @@ function init() {
       .text(name)
       .property("value", name);
     });
+    console.log(data.names[0]);
     buildPlots(data.names[0]);
     getMetadata(data.names[0]);
   });
